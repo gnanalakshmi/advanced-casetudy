@@ -1,0 +1,25 @@
+SELECT TOP 1000 [Id]
+      ,[Title]
+      ,[Director]
+      ,[DateReleased]
+  FROM [Movies].[dbo].[Movies_table1]
+
+
+  create table task(
+  task_id int identity primary key,
+  title varchar(50),
+  descriptions varchar(50),
+  from_date  date not null ,
+  todate  date not null ,
+  cat_name varchar(50),
+  store_name  varchar(50)
+  )
+  create table login(
+   login_id int primary key,
+   login_password varchar(50)
+   )
+
+   create table category(
+   cat_id int primary key,
+   cat_name varchar(50)
+   )
