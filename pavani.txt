@@ -1,0 +1,197 @@
+login page
+
+<meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        body {
+            background-image: url('../../images/login.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20% auto;
+        }
+    </style>
+
+
+layoutpage
+
+
+   <ul class="nav navbar-nav navbar-right">
+                @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+                <li>@Html.ActionLink("Log in", "UserLogin", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                <li>@Html.ActionLink("Log out", "UserLogin", "Home", routeValues: null, htmlAttributes: new { id = "logoffLink" })</li>
+            </ul>
+
+
+
+Details page
+
+    <style>
+        body {
+            background-image: url('../../images/img.jpg');
+             background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+     
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 6px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+     
+
+    </style>
+
+
+
+
+
+  <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+
+
+   
+</head>
+<body>
+    <form>
+        <div align="center" style="text-align:center">
+            <h1>Details</h1>
+            <hr />
+
+
+            <table class="table table-bordered"  align="center" style="text-align:center" >
+                @*<thead class="thead-inverse">*@
+                    <tr>
+                           <th scope="row">Title:</th>
+                 
+                                @*@Html.DisplayNameFor(model => model.title)*@
+                        
+                          <td>
+                         
+                                @Html.DisplayFor(model => model.Title)
+                            
+                           </td>
+                    </tr>
+                            <tr>
+
+                                <th scope="row">Description:</th>
+                        
+                                @*@Html.DisplayNameFor(model => model.descriptions)*@
+                        
+                           <td>
+                            
+                                @Html.DisplayFor(model => model.Descriptions)
+                          
+                               </td>
+                            </tr>
+                         <tr>
+                             <th scope="row">From Date:</th>
+
+                                     @*@Html.DisplayNameFor(model => model.from_date)*@
+                               
+                             <td>
+                            
+                                @Html.DisplayFor(model => model.FromDate)
+                          
+                                 </td>
+                             </tr>
+                       <tr>
+                           <th scope="row">To Date:</th>
+
+                          
+                                @*@Html.DisplayNameFor(model => model.todate)*@
+                          
+                             
+                           <td>
+
+                            
+                                   @Html.DisplayFor(model => model.ToDate)
+                              
+                           </td>
+                           </tr>
+                    <tr>
+                            <th scope="row">Category </th>
+
+                            
+                                @*@Html.DisplayNameFor(model => model.cat_name)*@
+                            
+                       
+
+                         <td>
+
+                            
+                                @Html.DisplayFor(model => model.Category)
+
+                             </td>
+                    </tr>
+                    <tr>
+                            <th scope="row">Store Name </th>
+
+                           
+                                @*@Html.DisplayNameFor(model => model.store_name)*@
+                          
+                     
+                    <td>
+
+                           
+                                @Html.DisplayFor(model => model.StoreName)
+                            
+                        </td>
+                    </tr>
+                </table>
+                       
+</div>
+
+        
+
+
+        
+        <p>
+            @*@Html.ActionLink("Edit", "Edit", new { id = Model.task_id }) |*@
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </form>
+</body>
+</html>
+
+
+
+
+homeController Logoff
+
+
+
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("UserLogin", "Home");
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
